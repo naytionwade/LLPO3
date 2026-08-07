@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LLPO3</title>
+
+
+<style>
+
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    font-family:Arial, sans-serif;
+
+    text-align:center;
+
+    background:linear-gradient(
+        #59d8ff,
+        #0066cc
+    );
+
+    color:white;
+
+}
+
+
+
+.logo{
+
+    width:250px;
+
+    margin-top:20px;
+
+}
+
+
+
+h1{
+
+    font-size:42px;
+
+}
+
+
+
+
+
+button{
+
+    padding:15px 35px;
+
+    margin:10px;
+
+    border:none;
+
+    border-radius:40px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:white;
+
+    color:#0066cc;
+
+}
+
+
+
+button:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+
+
+
+/* COINS */
+
+
+#coins{
+
+
+    background:white;
+
+    color:#0066cc;
+
+    width:250px;
+
+    margin:20px auto;
+
+    padding:15px;
+
+    border-radius:50px;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+#timer{
+
+    font-size:22px;
+
+    margin:20px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<img src="logo.png" class="logo">
+
+
+
+<h1>
+
+Pack Opener 3
+
+</h1>
+
+
+
+
+
+<audio id="music" loop>
+
+<source src="music.mp3" type="audio/mpeg">
+
+</audio>
+
+
+
+
+
+
+<div id="packs">
+
+
+
+<button onclick="openPack('bronze')">
+
+BRONZE PACK<br>
+
+FREE
+
+</button>
+
+
+
+
+<button onclick="openPack('silver')">
+
+SILVER PACK<br>
+
+1,500
+
+</button>
+
+
+
+
+
+<button onclick="openPack('gold')">
+
+GOLD PACK<br>
+
+15,000
+
+</button>
+
+
+
+
+
+<button onclick="openPack('ultimate')">
+
+ULTIMATE PACK<br>
+
+50,000
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<div id="timer"></div>
+<div id="walkout"></div>
+
+
+
+<div id="cardDisplay"></div>
+
+
+
+<div id="sellArea"></div>
+
+
+
+
+
+<h1>
+
+MY COINS
+
+</h1>
+
+
+
+<div id="coins">
+
+0
+
+</div>
+
+
+
+
+
+
+<h1>
+
+MY COLLECTION
+
+</h1>
+
+
+
+
+<div id="collection"></div>
+
+
+
+
+
+
+
+<style>
+
+
+/* PLAYER CARD */
+
+
+.player-card{
+
+
+    width:320px;
+
+    margin:40px auto;
+
+    padding:20px;
+
+    border-radius:25px;
+
+    background:white;
+
+    color:black;
+
+    box-shadow:
+
+    0 15px 30px rgba(0,0,0,.4);
+
+
+    animation:show .7s;
+
+
+}
+
+
+
+
+.player-card img{
+
+
+    width:100%;
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+.player-card h1{
+
+
+    font-size:65px;
+
+    margin:10px;
+
+
+}
+
+
+
+
+
+.player-card h2{
+
+
+    font-size:30px;
+
+
+}
+
+
+
+
+
+@keyframes show{
+
+
+from{
+
+    transform:scale(.2);
+
+    opacity:0;
+
+}
+
+
+to{
+
+    transform:scale(1);
+
+    opacity:1;
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* COLLECTION */
+
+
+#collection{
+
+
+    width:90%;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:20px;
+
+    background:
+
+    rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+
+}
+
+
+
+
+
+.collection-card{
+
+
+    display:inline-block;
+
+    background:white;
+
+    color:black;
+
+    padding:15px;
+
+    margin:10px;
+
+    border-radius:15px;
+
+    width:180px;
+
+
+}
+
+
+
+
+
+.collection-card img{
+
+
+    width:150px;
+
+    border-radius:10px;
+
+
+}
+
+
+
+
+
+.collection-card button{
+
+
+    background:#00c853;
+
+    color:white;
+
+    padding:10px 20px;
+
+    font-size:15px;
+
+
+}
+<style>
+
+
+/* RARITIES */
+
+
+.common{
+
+    background:#777;
+
+    color:white;
+
+}
+
+
+
+.uncommon{
+
+    background:#2ecc71;
+
+}
+
+
+
+.rare{
+
+    background:#3498db;
+
+}
+
+
+
+.moreRare{
+
+    background:#8e44ad;
+
+}
+
+
+
+.elite{
+
+    background:#f39c12;
+
+}
+
+
+
+.legendary{
+
+    background:gold;
+
+    color:black;
+
+}
+
+
+
+.icon{
+
+    background:red;
+
+    color:white;
+
+    box-shadow:0 0 50px gold;
+
+}
+
+
+
+
+
+
+
+/* SELL AREA */
+
+
+#sellArea{
+
+
+    min-height:50px;
+
+    margin:20px;
+
+
+}
+
+
+
+
+
+
+
+.sellButton{
+
+
+    background:#00c853;
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+/* WALKOUT */
+
+
+.walkout{
+
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+
+background:
+
+radial-gradient(circle,white,black);
+
+
+
+font-size:80px;
+
+font-weight:bold;
+
+
+
+z-index:100;
+
+
+
+animation:walkout 2.5s;
+
+
+}
+
+
+
+
+
+
+@keyframes walkout{
+
+
+0%{
+
+opacity:0;
+
+transform:scale(.3);
+
+}
+
+
+
+40%{
+
+opacity:1;
+
+transform:scale(1.2);
+
+}
+
+
+
+100%{
+
+opacity:0;
+
+}
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+.logo{
+
+width:170px;
+
+}
+
+
+
+button{
+
+width:85%;
+
+}
+
+
+
+.player-card{
+
+width:85%;
+
+}
+
+
+
+.walkout{
+
+font-size:45px;
+
+}
+
+
+
+}
+
+
+
+</style>
+<script src="cards.js"></script>
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

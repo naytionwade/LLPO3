@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #111827;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+/* PACK */
+
+.pack-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pack {
+    width: 220px;
+    height: 300px;
+    background: linear-gradient(135deg, #374151, #111827);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    margin-bottom: 25px;
+}
+
+.pack-logo {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+/* BUTTON */
+
+button {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    background: white;
+    color: black;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#cooldown {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+
+/* CARD */
+
+#cardReveal {
+    margin-top: 40px;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+#playerCard {
+    width: 300px;
+    height: 430px;
+    margin: auto;
+    background: linear-gradient(160deg, #ffffff, #d1d5db);
+    color: black;
+    border-radius: 35px;
+    padding: 20px;
+    box-shadow: 0 0 40px white;
+    animation: reveal 0.6s ease;
+}
+
+#rating {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+#playerImage {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+#playerName {
+    font-size: 30px;
+    margin: 10px;
+}
+
+#playerPosition {
+    font-size: 20px;
+}
+
+
+/* NEW LABEL */
+
+#newCard {
+    background: #22c55e;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+
+/* COLLECTION */
+
+.collection {
+    margin-top: 50px;
+}
+
+#collectionList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+/* ANIMATION */
+
+@keyframes reveal {
+
+    from {
+        transform: scale(0.5) rotate(10deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+
+}
